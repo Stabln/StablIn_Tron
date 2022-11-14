@@ -1,4 +1,4 @@
-# StablenNFT
+# StablnNFT
 
 
 ## DEMO
