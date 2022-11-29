@@ -28,6 +28,7 @@ contract Stablin is TRC721{
     uint256 public totalSupply;
     uint256 public totalSupplyTenUSD;
     uint256 public totalSupplyFiftyUSD;
+    uint256 public totalFeeClaimed;
     mapping (uint256 => NFTInfo) public NFTInfos; // token Id => NFTInfo
 
     // munbai USDC: 0xFEca406dA9727A25E71e732F9961F680059eF1F9
@@ -120,7 +121,14 @@ contract Stablin is TRC721{
         }
 
     }
-
+    
+    // only for the DEMO!!!
+    function feeRedeem() public {
+        // require(msg.sender == ownerOf(0), "Wrong Fee Collector");
+        IUSDT(USDT).transfer(msg.sender, totalFeeClaimed);
+        totalFeeClaimed = 0;
+    }
+    
     function getBuyAmount(uint256 price) public pure returns(uint256 amount){
         amount = price + (price * 1 / 100);
     }
